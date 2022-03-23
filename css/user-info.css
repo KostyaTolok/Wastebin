@@ -1,0 +1,32 @@
+.user-info {
+  margin-top: 1.4rem;
+}
+
+.user-info__image {
+  height: 6.75rem;
+  width: 6.75rem;
+  display: inline-block;
+}
+
+.user-details {
+  margin-left: 1.3rem;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.user-details__user-name {
+  margin: 0;
+  margin-left: 0.3rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+}
+
+.user-statistics {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.user-statistics > i {
+  padding: 0 0.3rem;
+}

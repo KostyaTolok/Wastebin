@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wastebin</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/about-us.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <script src="https://kit.fontawesome.com/14394572a9.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/main-signed-in.html" class="header__logo">Wastebin</a>
+            <a href="/public-bins.html" class="header__link_disabled">Bins</a>
+            <a href="/about-us.html" class="header__link_disabled">About us</a>
+            <a href="/main-signed-in.html" class="button button-medium add-bin-button">
+                <i class="fa-solid fa-plus fa-xl add-bin-button__icon"></i>
+                <span class="add-bin-button__text">bin</span>
+            </a>
+            <div class="header__right">
+                <p class="header__user-name">User name</p>
+                <a href="/user-bins.html"><img class="image header__user-image" src="/images/cat.jpg"
+                        alt="User Image"></a>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-angle-down user-dropdown__icon"></i>
+                    <div class="user-dropdown__content">
+                        <a href="/user-bins.html">My bins</a>
+                        <a href="/public-bins.html">Public bins</a>
+                        <a href="/user-profile.html">My profile</a>
+                        <a href="/change-password.html">Change password</a>
+                        <a href="/main.html">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="wrap">
+        <main>
+            <section class="about-us">
+                <h3 class="title title_bold about-us__title">About us</h3>
+                <article>
+                    <h4 class="title title_bold about-us__article-title">General information</h4>
+                    <p class="about-us__text">Wastebin is an analog of Pastebin which allows users to store and share
+                        text
+                        online. Mainly designed for
+                        programmers to store pieces of source code or configuration information since it supports syntax
+                        highlighting.</p>
+                </article>
+                <article>
+                    <h4 class="title title_bold about-us__article-title">Wastebin provides these functions: </h4>
+                    <ol class="about-us__text">
+                        <li>Creation of code bins</li>
+                        <li>Live syntax highlighting</li>
+                        <li>Configuration of bin expiration, publicity and password</li>
+                        <li>View most recent public bins</li>
+                        <li>Search through your own bins</li>
+                        <li>View any public bin, edit your bins</li>
+                        <li>Configuration of user profile</li>
+                    </ol>
+                </article>
+            </section>
+        </main>
+        <aside>
+            <nav>
+                <ul class="aside-bins-list">
+                    <a href="/public-bins.html" class="title aside-bins-list__title">Public bins</a>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">My script</a>
+                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">Chess</a>
+                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">My best labs</a>
+                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <footer>
+        <p>Wastebin</p>
+    </footer>
+</body>
+
+</html>

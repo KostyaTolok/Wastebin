@@ -1,0 +1,68 @@
+.bin-info {
+  margin: 1.4rem 0rem;
+}
+
+.bin-info .bin-info__image {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.bin-info .bin-info__details {
+  display: inline-block;
+  margin-left: 1.1rem;
+}
+
+.bin-info .bin-info__title {
+  font-size: 1.4rem;
+}
+
+.bin-info__statistics {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.bin-info__statistics > i{
+  padding: 0 0.3rem;
+}
+
+.top-area {
+  font-size: 0.8rem;
+  display: flex;
+  background-color: var(--light-code-area-color);
+  justify-content: space-between;
+  padding: 0.3rem 0.3rem;
+}
+
+.top-area .top-area__left {
+  text-align: justify;
+  height: fit-content;
+}
+
+.top-area .top-area__right {
+  text-align: start;
+}
+
+.top-area .top-area__right .top-area__button {
+  background-color: var(--light-bg-color);
+  padding: 0.2rem 0.2rem;
+  margin-right: 0.3rem;
+}
+
+.top-area .top-area__right .top-area__button:hover {
+  background-color: var(--dark-bg-color);
+}
+
+.source-code {
+  min-height: fit-content;
+}
+
+.source-code > ol {
+  margin: 0 0 0 0.9rem;
+  padding-left: 0.5rem;
+}
+
+.source-code > ol li {
+  padding-left: 1.8rem;
+}

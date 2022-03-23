@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wastebin</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/user-info.css">
+    <link rel="stylesheet" href="/css/bins-list.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <script src="https://kit.fontawesome.com/14394572a9.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/main-signed-in.html" class="header__logo">Wastebin</a>
+            <a href="/public-bins.html" class="header__link_disabled">Bins</a>
+            <a href="/about-us.html" class="header__link_disabled">About us</a>
+            <a href="/main-signed-in.html" class="button button-medium add-bin-button">
+                <i class="fa-solid fa-plus fa-xl add-bin-button__icon"></i>
+                <span class="add-bin-button__text">bin</span>
+            </a>
+            <div class="header__right">
+                <p class="header__user-name">User name</p>
+                <a href="/user-bins.html"><img class="image header__user-image" src="/images/cat.jpg"
+                        alt="User Image"></a>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-angle-down user-dropdown__icon"></i>
+                    <div class="user-dropdown__content">
+                        <a href="/user-bins.html">My bins</a>
+                        <a href="/public-bins.html">Public bins</a>
+                        <a href="/user-profile.html">My profile</a>
+                        <a href="/change-password.html">Change password</a>
+                        <a href="/main.html">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="wrap">
+        <main>
+            <div class="user-info">
+                <img class="image user-info__image" src="/images/cat.jpg" alt="User Image">
+                <div class="user-details">
+                    <p class="user-details__user-name">User name</p>
+                    <p class="user-statistics"><i class="fa-solid fa-calendar"></i>Mar
+                        6th, 2022
+                        <i class="fa-solid fa-eye"></i>5
+                    </p>
+                </div>
+            </div>
+            <div class="bins-list">
+                <h3 class="title bins-list__title">User bins</h3>
+                <div class="search-container">
+                    <form action="post">
+                        <input class="search-container__input" placeholder="Search">
+                        <button type="submit" class="search-container__submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="bins-list__container">
+                    <div class="bins-list__container-item">Title</div>
+                    <div class="bins-list__container-item">Added</div>
+                    <div class="bins-list__container-item">Expires</div>
+                    <div class="bins-list__container-item">Syntax</div>
+                    <div class="bins-list__container-divider"></div>
+                    <a href="/bin-view.html" class="bins-list__container-item">My script</a>
+                    <div class="bins-list__container-item">Mar 1st, 2022</div>
+                    <div class="bins-list__container-item">15 min</div>
+                    <div class="bins-list__container-item">Python</div>
+                    <div class="bins-list__container-divider"></div>
+                    <a href="/bin-view.html" class="bins-list__container-item">My script</a>
+                    <div class="bins-list__container-item">Mar 1st, 2022</div>
+                    <div class="bins-list__container-item">15 min</div>
+                    <div class="bins-list__container-item">Python</div>
+                    <div class="bins-list__container-divider"></div>
+                    <a href="/bin-view.html" class="bins-list__container-item">My script</a>
+                    <div class="bins-list__container-item">Mar 1st, 2022</div>
+                    <div class="bins-list__container-item">15 min</div>
+                    <div class="bins-list__container-item">Python</div>
+                </div>
+            </div>
+        </main>
+        <aside>
+            <nav>
+                <ul class="aside-bins-list">
+                    <a href="/public-bins.html" class="title aside-bins-list__title">Public bins</a>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">My script</a>
+                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">Chess</a>
+                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">My best labs</a>
+                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <footer>
+        <p>Wastebin</p>
+    </footer>
+</body>
+
+</html>

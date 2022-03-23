@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wastebin</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <script src="https://kit.fontawesome.com/14394572a9.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/main-signed-in.html" class="header__logo">Wastebin</a>
+            <a href="/public-bins.html" class="header__link_disabled">Bins</a>
+            <a href="/about-us.html" class="header__link_disabled">About us</a>
+            <a href="/main-signed-in.html" class="button button-medium add-bin-button">
+                <i class="fa-solid fa-plus fa-xl add-bin-button__icon"></i>
+                <span class="add-bin-button__text">bin</span>
+            </a>
+            <div class="header__right">
+                <a href="/login.html" class="button button-medium header__auth-button">Login</a>
+                <a href="/register.html" class="button button-medium header__auth-button">Register</a>
+            </div>
+        </nav>
+    </header>
+    <div class="wrap">
+        <main>
+            <form class="form" method="POST" enctype="multipart/form-data">
+                <h3 class="title form__title form__title_login">Login:</h3>
+                <div class="form__container">
+                    <label class="form__container-label" for="email-input">Email:</label>
+                    <input class="input form__container-input" id="email-input" type="text">
+                    <label class="form__container-label" for="password-input">Password:</label>
+                    <input class="input form__container-input" id="password-input" type="text">
+                    <!-- Anchor won't be used in real project -->
+                    <a href="/main-signed-in.html" class="button-submit">
+                        <input class="button button-medium form__container-input form__container-button" type="button"
+                            value="Login">
+                    </a>
+                </div>
+            </form>
+        </main>
+        <aside>
+            <nav>
+                <ul class="aside-bins-list">
+                    <a href="/public-bins.html" class="title aside-bins-list__title">Public bins</a>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">My script</a>
+                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">Chess</a>
+                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="/bin-view.html" class="aside-bins-list__item-name">My best labs</a>
+                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <footer>
+        <p>Wastebin</p>
+    </footer>
+</body>
+
+</html>
