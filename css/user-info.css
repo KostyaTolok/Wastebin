@@ -20,13 +20,3 @@
   font-size: 1.6rem;
   color: var(--text-color);
 }
-
-.user-statistics {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text-color);
-}
-
-.user-statistics > i {
-  padding: 0 0.3rem;
-}

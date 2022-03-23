@@ -131,12 +131,18 @@ body {
 }
 
 .add-bin-button__icon {
+  display: inline-block;
+  vertical-align: middle;
   color: var(--dark-bg-color);
   margin-left: 0.3em;
   padding-right: 0.07em;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 .add-bin-button__text {
+  display: inline-block;
+  vertical-align: middle;
   margin-right: 0.3em;
 }
 
@@ -186,7 +192,8 @@ body {
 .user-dropdown__icon {
   color: var(--header-button-color);
   cursor: pointer;
-  font-size: 1.8rem;
+  height: 1.8rem;
+  width: 1.8rem;
 }
 
 .user-dropdown:hover .user-dropdown__content {
@@ -341,6 +348,19 @@ aside {
   font-size: 0.9rem;
   text-decoration: none;
   color: var(--disabled-text-color);
+}
+
+.statistics {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.statistics > img {
+  padding: 0 0.3rem;
+  display: inline-block;
+  vertical-align: bottom;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 @media screen and (max-width: 960px) {
