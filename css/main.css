@@ -355,7 +355,7 @@ aside {
   font-size: 1rem;
 }
 
-.statistics > img {
+.statistics__icon {
   padding: 0 0.3rem;
   display: inline-block;
   vertical-align: bottom;

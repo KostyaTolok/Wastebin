@@ -49,11 +49,3 @@
     row-gap: 1.5em;
   }
 }
-
-/* @media screen and (max-width: 736px) {
-  .form__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 1em;
-  }
-} */
