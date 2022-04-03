@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wastebin</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="main-signed-in.html" class="header__logo">Wastebin</a>
+            <a href="public-bins.html" class="header__link_disabled">Bins</a>
+            <a href="about-us.html" class="header__link_disabled">About us</a>
+            <a href="main-signed-in.html" class="button button-medium add-bin-button">
+                <img src="images/plus.png" class="add-bin-button__icon">
+                <span class="add-bin-button__text">bin</span>
+            </a>
+            <div class="header__right">
+                <p class="header__user-name">User name</p>
+                <a href="user-bins.html"><img class="image header__user-image" src="images/cat.jpg"
+                        alt="User Image"></a>
+                <div class="user-dropdown">
+                    <img src="images/arrow.png" class="user-dropdown__icon">
+                    <div class="user-dropdown__content">
+                        <a href="user-bins.html">My bins</a>
+                        <a href="public-bins.html">Public bins</a>
+                        <a href="user-profile.html">My profile</a>
+                        <a href="change-password.html">Change password</a>
+                        <a href="index.html">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="wrap">
+        <main>
+            <form class="form" method="POST">
+                <p class="title form__title">New bin</p>
+                <textarea name="code-area" class="code-area"></textarea>
+                <p class="title form__title">Configure your bin:</p>
+                <div class="form__container">
+
+                    <label class="form__container-label" for="syntax-highlighting-select">Syntax
+                        Highlighting:</label>
+                    <select class="form__container-input form__container-select" name="syntax-highlighting-select">
+                        <option>None</option>
+                        <option>C</option>
+                        <option>C++</option>
+                        <option>C#</option>
+                        <option>Python</option>
+                    </select>
+                    <label class="form__container-label" for="bin-expiration-select">Bin
+                        Expiration:</label>
+                    <select class="form__container-input form__container-select" name="bin-expiration-select">
+                        <option>Never</option>
+                        <option>Burn after read</option>
+                        <option>10 minutes</option>
+                        <option>1 hour</option>
+                        <option>1 day</option>
+                        <option>1 week</option>
+                        <option>1 month</option>
+                        <option>6 month</option>
+                        <option>1 year</option>
+                    </select>
+                    <label class="form__container-label" for="bin-publicity-select">Bin
+                        Publicity:</label>
+                    <select class="form__container-input form__container-select" name="bin-publicity-select">
+                        <option>Public</option>
+                        <option>Private</option>
+                    </select>
+
+                    <label class="form__container-label" for="password-checkbox">Password:</label>
+                    <label class="form__container-label" for="password-checkbox"><input class="form__container-checkbox"
+                            id="password-checkbox" type="checkbox">
+                        Disabled
+                    </label>
+                    <input class="form__container-input password-input disabled" id="password-input" type="password"
+                        disabled>
+                    <label class="form__container-label" for="title-input">Title:</label>
+                    <input class="form__container-input" id="title-input" type="text">
+                    <input class="button button-medium form__container-input form__container-button button-submit"
+                        type="submit" value="Submit bin">
+                </div>
+            </form>
+        </main>
+        <aside>
+            <nav>
+                <ul class="aside-bins-list">
+                    <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
+                    <li class="aside-bins-list__item">
+                        <a href="bin-view.html" class="aside-bins-list__item-name">My script</a>
+                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="bin-view.html" class="aside-bins-list__item-name">Chess</a>
+                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="bin-view.html" class="aside-bins-list__item-name">My best labs</a>
+                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <footer>
+        <p>Wastebin</p>
+    </footer>
+</body>
+
+</html>

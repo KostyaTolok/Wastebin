@@ -1,0 +1,51 @@
+.form__title_update-user {
+  font-size: 2.18rem;
+}
+
+.form__container_update-user {
+  grid-template-columns: minmax(18.75rem, 34.375rem) minmax(18.75rem, 34.375rem);
+}
+
+.user-picture-container {
+  display: inline-block;
+}
+
+.user-picture {
+  height: 6.75rem;
+  width: 6.75rem;
+}
+
+.upload-picture-button {
+  font-size: 1.1rem;
+  width: 10.25rem;
+  vertical-align: bottom;
+  margin-left: 2.3rem;
+}
+
+.upload-picture-button__label {
+  cursor: pointer;
+}
+
+.upload-picture-button .upload-picture-button__label input[type="file"] {
+  display: none;
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(18.75rem, 23.125rem));
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.form__container-button_update-user {
+  width: 13.25rem;
+}
+
+@media screen and (max-width: 640px) {
+  .buttons-container {
+    grid-template-columns: repeat(3, minmax(10rem, 23rem));
+    grid-column-start: 1;
+    grid-column-end: 3;
+    row-gap: 1.5em;
+  }
+}

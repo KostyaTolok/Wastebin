@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Wastebin</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bin-view.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="main-signed-in.html" class="header__logo">Wastebin</a>
+            <a href="public-bins.html" class="header__link_disabled">Bins</a>
+            <a href="about-us.html" class="header__link_disabled">About us</a>
+            <a href="main-signed-in.html" class="button button-medium add-bin-button">
+                <img src="images/plus.png" class="add-bin-button__icon">
+                <span class="add-bin-button__text">bin</span>
+            </a>
+            <div class="header__right">
+                <p class="header__user-name">User name</p>
+                <a href="user-bins.html"><img class="image header__user-image" src="images/cat.jpg"
+                        alt="User Image"></a>
+                <div class="user-dropdown">
+                    <img src="images/arrow.png" class="user-dropdown__icon">
+                    <div class="user-dropdown__content">
+                        <a href="user-bins.html">My bins</a>
+                        <a href="public-bins.html">Public bins</a>
+                        <a href="user-profile.html">My profile</a>
+                        <a href="change-password.html">Change password</a>
+                        <a href="index.html">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="wrap">
+        <main class="bin-view">
+            <div class="bin-info">
+                <img class="image bin-info__image" src="images/cat.jpg" alt="User Image">
+                <div class="bin-info__details">
+                    <p class="title bin-info__title">User name</p>
+                    <p class="statistics">User name
+                        <img src="images/calendar.png" class="statistics__icon">Mar
+                        6th, 2022
+                        <img src="images/eye.png" class="statistics__icon">5
+                        <img src="images/clock.png" class="statistics__icon">Never
+                    </p>
+                </div>
+            </div>
+            <div class="top-area">
+                <p class="top-area__left">Python</p>
+                <div class="top-area__right">
+                    <a href="main-signed-in.html" class="button button-small top-area__button">Edit</a>
+                    <a href="main-signed-in.html" class="button button-small top-area__button">Delete</a>
+                </div>
+            </div>
+            <div class="code-area source-code">
+                <ol>
+                    <li><code>print("hello")</code></li>
+                </ol>
+            </div>
+            <h3 class="title">Raw bin data:</h3>
+            <div class="code-area">
+                <pre><code>   print("hello")</code></pre>
+            </div>
+        </main>
+        <aside>
+            <nav>
+                <ul class="aside-bins-list">
+                    <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
+                    <li class="aside-bins-list__item">
+                        <a href="bin-view.html" class="aside-bins-list__item-name">My script</a>
+                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="bin-view.html" class="aside-bins-list__item-name">Chess</a>
+                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
+                    </li>
+                    <li class="aside-bins-list__item">
+                        <a href="bin-view.html" class="aside-bins-list__item-name">My best labs</a>
+                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <footer>
+        <p>Wastebin</p>
+    </footer>
+</body>
+
+</html>
