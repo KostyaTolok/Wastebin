@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="css/user-profile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -39,10 +43,13 @@
     <div class="wrap">
         <main>
             <form class="form" method="POST" enctype="multipart/form-data">
+                <div class="error-summary">
+                    <ul class="error-summary__list"></ul>
+                </div>
                 <h3 class="title form__title form__title_update-user">My profile:</h3>
                 <div class="form__container form__container_update-user">
-                    <label class="form__container-label" for="user-name-input">Username:</label>
-                    <input class="input form__container-input" id="user-name-input" type="text">
+                    <label class="form__container-label" for="username-input">Username:</label>
+                    <input class="input form__container-input" id="username-input" type="text">
                     <label class="form__container-label" for="email-input">Email adderss:</label>
                     <input class="input form__container-input" id="email-input" type="email">
                     <label class="form__container-label" for="profile-picture-input">Profile picture:</label>
@@ -52,23 +59,14 @@
                             class="button button-medium form__container-input form__container-button upload-picture-button">
                             <label class="upload-picture-button__label">
                                 Upload picture
-                                <input type="file">
+                                <input id="image-input" accept=".jpg, .jpeg, .png" type="file">
                             </label>
                         </button>
                     </div>
                     <label class="form__container-label" for="location-input">Location:</label>
                     <input class="input form__container-input" id="location-input" type="text">
-                    <div class="buttons-container">
-                        <input
-                            class="button button-medium form__container-input form__container-button form__container-button_update-user"
-                            type="submit" value="Update profile">
-                        <input
-                            class="button button-medium form__container-input form__container-button form__container-button_update-user"
-                            type="submit" value="Change password">
-                        <input
-                            class="button button-medium form__container-input form__container-button form__container-button_update-user"
-                            type="submit" value="Log out">
-                    </div>
+                    <input class="button button-medium form__container-input form__container-button
+                     button-submit" type="button" onclick="submitUpdateForm()" value="Update profile">
                 </div>
             </form>
         </main>
@@ -76,18 +74,6 @@
             <nav>
                 <ul class="aside-bins-list">
                     <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My script</a>
-                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">Chess</a>
-                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My best labs</a>
-                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
-                    </li>
                 </ul>
             </nav>
         </aside>
@@ -95,6 +81,10 @@
     <footer>
         <p>Wastebin</p>
     </footer>
+    <script src="js/db/models/code-bin.js"></script>
+    <script src="js/db/bin-database.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/user-profile.js"></script>
 </body>
 
 </html>

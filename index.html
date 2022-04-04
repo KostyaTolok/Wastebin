@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
 </head>
 
 <body>
@@ -19,16 +24,36 @@
                 <span class="add-bin-button__text">bin</span>
             </a>
             <div class="header__right">
-                <a href="login.html" class="button button-medium header__auth-button">Login</a>
-                <a href="register.html" class="button button-medium header__auth-button">Register</a>
+                <div id="anonymous">
+                    <a href="login.html" class="button button-medium header__auth-button">Login</a>
+                    <a href="register.html" class="button button-medium header__auth-button">Register</a>
+                </div>
+                <div id="signed-in">
+                    <p class="header__user-name">User name</p>
+                    <a href="user-bins.html"><img class="image header__user-image" src="images/cat.jpg"
+                            alt="User Image"></a>
+                    <div class="user-dropdown">
+                        <img src="images/arrow.png" class="user-dropdown__icon">
+                        <div class="user-dropdown__content">
+                            <a href="user-bins.html">My bins</a>
+                            <a href="public-bins.html">Public bins</a>
+                            <a href="user-profile.html">My profile</a>
+                            <a href="change-password.html">Change password</a>
+                            <a href="index.html">Log out</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
     <div class="wrap">
         <main>
             <form class="form" method="POST">
+                <div class="error-summary">
+                    <ul class="error-summary__list"></ul>
+                </div>
                 <p class="title form__title">New bin</p>
-                <textarea name="code" class="code-area"></textarea>
+                <textarea name="code" class="code-area" onkeydown="checkTab(this, event);"></textarea>
                 <p class="title form__title">Configure your bin:</p>
                 <div class="form__container">
                     <label class="form__container-label" for="syntax-highlighting-select">Syntax
@@ -40,6 +65,9 @@
                         <option>C++</option>
                         <option>C#</option>
                         <option>Python</option>
+                        <option>Javascript</option>
+                        <option>Html</option>
+                        <option>CSS</option>
                     </select>
                     <label class="form__container-label" for="bin-expiration-select">Bin
                         Expiration:</label>
@@ -62,35 +90,27 @@
                     </select>
 
                     <label class="form__container-label" for="password-checkbox">Password:</label>
-                    <label class="form__container-label" for="password-checkbox"><input class="form__container-checkbox"
-                            id="password-checkbox" type="checkbox">
-                        Disabled
-                    </label>
+                    <div>
+                        <input class="form__container-checkbox" id="password-checkbox" onchange="switchPassword()"
+                            type="checkbox">
+
+                        <label class="form__container-label" id="password-label" for="password-checkbox">
+                            Disabled
+                        </label>
+                    </div>
                     <input class="form__container-input password-input disabled" id="password-input" type="password"
                         disabled>
                     <label class="form__container-label" for="title-input">Title:</label>
                     <input class="form__container-input" id="title-input" type="text">
                     <input class="button button-medium form__container-input form__container-button button-submit"
-                        type="submit" value="Submit bin">
+                        type="button" id="add-bin-button" onclick="submitAddBinForm()" value="Submit bin">
                 </div>
             </form>
         </main>
         <aside>
             <nav>
                 <ul class="aside-bins-list">
-                    <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My script</a>
-                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">Chess</a>
-                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My best labs</a>
-                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
-                    </li>
+                    <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>      
                 </ul>
             </nav>
         </aside>
@@ -98,6 +118,10 @@
     <footer>
         <p>Wastebin</p>
     </footer>
+    <script src="js/db/models/code-bin.js"></script>
+    <script src="js/db/bin-database.js"></script>
+    <script src="js/bin-form.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

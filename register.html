@@ -4,9 +4,12 @@
 <head>
     <title>Wastebin</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -28,7 +31,10 @@
     <div class="wrap">
         <main>
             <form class="form" method="POST" enctype="multipart/form-data">
-                <h3 class="title form__title">Login:</h3>
+                <div class="error-summary">
+                    <ul class="error-summary__list"></ul>
+                </div>
+                <h3 class="title form__title">Register:</h3>
                 <div class="form__container">
                     <label class="form__container-label" for="email-input">Email:</label>
                     <input class="input form__container-input" id="email-input" type="email">
@@ -38,11 +44,8 @@
                     <input class="input form__container-input" id="password-input" type="password">
                     <label class="form__container-label" for="confirm-password-input">Confirm password:</label>
                     <input class="input form__container-input" id="confirm-password-input" type="password">
-                    <!-- Anchor won't be used in real project -->
-                    <a href="main-signed-in.html" class="button-submit">
-                        <input class="button button-medium form__container-input form__container-button" type="button"
-                            value="Register">
-                    </a>
+                    <input class="button button-medium form__container-input form__container-button button-submit"
+                        type="button" onclick="submitRegisterForm()" value="Register">
                 </div>
             </form>
         </main>
@@ -50,18 +53,6 @@
             <nav>
                 <ul class="aside-bins-list">
                     <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My script</a>
-                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">Chess</a>
-                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My best labs</a>
-                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
-                    </li>
                 </ul>
             </nav>
         </aside>
@@ -69,6 +60,10 @@
     <footer>
         <p>Wastebin</p>
     </footer>
+    <script src="js/db/models/code-bin.js"></script>
+    <script src="js/db/bin-database.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
 </body>
 
 </html>

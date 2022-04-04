@@ -30,17 +30,6 @@
   display: none;
 }
 
-.buttons-container {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(18.75rem, 23.125rem));
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
-.form__container-button_update-user {
-  width: 13.25rem;
-}
-
 @media screen and (max-width: 640px) {
   .buttons-container {
     grid-template-columns: repeat(3, minmax(10rem, 23rem));

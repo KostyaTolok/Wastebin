@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/bins-list.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Red+Hat+Display">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -59,25 +63,11 @@
                     </form>
                 </div>
                 <div class="bins-list__container">
-                    <div class="bins-list__container-item">Title</div>
-                    <div class="bins-list__container-item">Added</div>
-                    <div class="bins-list__container-item">Expires</div>
-                    <div class="bins-list__container-item">Syntax</div>
+                    <p class="bins-list__container-item">Title</p>
+                    <p class="bins-list__container-item">Added</p>
+                    <p class="bins-list__container-item">Expires</p>
+                    <p class="bins-list__container-item">Syntax</p>
                     <div class="bins-list__container-divider"></div>
-                    <a href="bin-view.html" class="bins-list__container-item">My script</a>
-                    <div class="bins-list__container-item">Mar 1st, 2022</div>
-                    <div class="bins-list__container-item">15 min</div>
-                    <div class="bins-list__container-item">Python</div>
-                    <div class="bins-list__container-divider"></div>
-                    <a href="bin-view.html" class="bins-list__container-item">My script</a>
-                    <div class="bins-list__container-item">Mar 1st, 2022</div>
-                    <div class="bins-list__container-item">15 min</div>
-                    <div class="bins-list__container-item">Python</div>
-                    <div class="bins-list__container-divider"></div>
-                    <a href="bin-view.html" class="bins-list__container-item">My script</a>
-                    <div class="bins-list__container-item">Mar 1st, 2022</div>
-                    <div class="bins-list__container-item">15 min</div>
-                    <div class="bins-list__container-item">Python</div>
                 </div>
             </div>
         </main>
@@ -85,18 +75,6 @@
             <nav>
                 <ul class="aside-bins-list">
                     <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My script</a>
-                        <p class="aside-bins-list__item-info">User123 | C++ | 19 min ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">Chess</a>
-                        <p class="aside-bins-list__item-info">User | Python | 1 hour ago</p>
-                    </li>
-                    <li class="aside-bins-list__item">
-                        <a href="bin-view.html" class="aside-bins-list__item-name">My best labs</a>
-                        <p class="aside-bins-list__item-info">Dezorgon | C# | 2 hours ago</p>
-                    </li>
                 </ul>
             </nav>
         </aside>
@@ -104,6 +82,9 @@
     <footer>
         <p>Wastebin</p>
     </footer>
+    <script src="js/db/models/code-bin.js"></script>
+    <script src="js/db/bin-database.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
