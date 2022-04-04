@@ -29,6 +29,10 @@ async function submitAddBinForm() {
   var password = passwordInput.value;
   var title = document.getElementById("title-input").value;
 
+  if (title === "") {
+    title = "Untitled";
+  }
+
   if (checkBinForm()) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
@@ -60,7 +64,6 @@ async function submitAddBinForm() {
 function checkBinForm() {
   var code = document.getElementsByClassName("code-area")[0].value;
   var password = passwordInput.value;
-  var title = document.getElementById("title-input").value;
 
   let foundErrors = false;
 
@@ -72,10 +75,6 @@ function checkBinForm() {
   if (passwordCheckbox.checked && password == "") {
     addError("Password cannot be blank");
     foundErrors = true;
-  }
-
-  if (title === "") {
-    title = "Untitled";
   }
 
   return foundErrors;

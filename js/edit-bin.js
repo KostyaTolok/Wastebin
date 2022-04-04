@@ -46,6 +46,10 @@ function submitUpdateBinForm() {
   var password = passwordInput.value;
   var title = document.getElementById("title-input").value;
 
+  if(title === "") {
+    title = "Untitled";
+  }
+
   if (checkBinForm()) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
