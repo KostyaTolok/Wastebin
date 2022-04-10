@@ -24,7 +24,7 @@ function submitLoginForm() {
         location.href = "index.html";
       })
       .catch((error) => {
-        addError(error.message);
+        addError("Email or password is incorrect");
       });
   }
 }
@@ -66,7 +66,7 @@ function submitRegisterForm() {
         location.href = "index.html";
       })
       .catch((error) => {
-        addError(error.message);
+        addError("Email is already in use");
       });
   }
 }
