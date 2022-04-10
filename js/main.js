@@ -65,3 +65,10 @@ function getUrlParam(param) {
   return value;
 }
 
+const logOutLink = document.getElementById("log-out-link");
+logOutLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  binAuth.logout().then(() => {
+    location.href = "index.html";
+  });
+});

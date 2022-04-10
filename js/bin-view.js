@@ -8,6 +8,7 @@ db.getCodeBin(binId)
     console.error("Error getting bins: ", error);
   });
 
+
 function loadBin(bin) {
   var binTitle = document.getElementsByClassName("bin-info__title")[0];
   var binCreatedDate = document.getElementById("bin-created-date");
@@ -52,7 +53,7 @@ function deleteBin() {
     db.deleteCodeBin(binId)
       .then(() => {
         console.log(`Bin with id ${binId} successfully deleted`);
-        location.href = "main-signed-in.html";
+        location.href = "index.html";
       })
       .catch((error) => {
         console.error("Error deleting bin: ", error);

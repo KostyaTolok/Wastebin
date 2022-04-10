@@ -28,6 +28,6 @@ function submitChangePasswordForm() {
   if (foundErrors) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
-    location.href = "main-signed-in.html";
+    location.href = "index.html";
   }
 }

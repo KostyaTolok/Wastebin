@@ -1,15 +1,30 @@
+var emailInput = document.getElementById("email-input");
+var usernameInput = document.getElementById("username-input");
+var imageInput = document.getElementById("image-input");
+var image = document.getElementsByClassName("user-picture")[0];
+
+binAuth.isAuthenticated().then((isAuthenticated) => {
+  if (isAuthenticated) {
+    emailInput.value = binAuth.user.email;
+    usernameInput.value = binAuth.user.displayName;
+    if (binAuth.user.photoURL) {
+      binAuth.getUserPhotoUrl().then((url) => {
+        image.setAttribute("src", url);
+      });
+    }
+  }
+});
+
 function submitUpdateForm() {
   clearErrors();
-  var email = document.getElementById("email-input").value;
-  var username = document.getElementById("username-input").value;
   var foundErrors = false;
 
-  if (email === "") {
+  if (emailInput.value === "") {
     addError("Email cannot be blank");
     foundErrors = true;
   }
 
-  if (username === "") {
+  if (usernameInput.value === "") {
     addError("Username cannot be blank");
     foundErrors = true;
   }
@@ -17,14 +32,15 @@ function submitUpdateForm() {
   if (foundErrors) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
-    location.href = "main-signed-in.html";
+    binAuth
+      .updateUser(emailInput.value, usernameInput.value, imageInput.files[0])
+      .catch((error) => {
+        addError(error);
+      });
   }
 }
 
-var imageInput = document.getElementById("image-input");
-var image = document.getElementsByClassName("user-picture")[0];
 var fileTypes = ["image/jpeg", "image/pjpeg", "image/png"];
-
 imageInput.addEventListener("change", updateUserPicture);
 
 function updateUserPicture() {

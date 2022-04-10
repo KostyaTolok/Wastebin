@@ -36,6 +36,11 @@ async function submitAddBinForm() {
   if (checkBinForm()) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
+    let userId = null;
+    if (binAuth.auth.currentUser) {
+      userId = binAuth.getCurrentUserId();
+    }
+    
     var newBin = new CodeBin(
       code
         .replace(new RegExp("\n", "g"), "<br>")
@@ -45,7 +50,7 @@ async function submitAddBinForm() {
       selectedPublicity,
       password,
       title,
-      0,
+      userId,
       new Date(),
       0
     );
