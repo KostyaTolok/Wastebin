@@ -1,17 +1,17 @@
 var binsList = document.getElementsByClassName("bins-list__container")[0];
 
 function addBin(bin, id) {
-  var binTitle = createAnchor(
+  let binTitle = createAnchor(
     `bin-view.html?id=${id}`,
     "bins-list__container-item",
     bin.title
   );
-  var binAdded = createParagraph("bins-list__container-item", bin.createdDate);
-  var binExpiration = createParagraph(
+  let binAdded = createParagraph("bins-list__container-item", bin.createdDate);
+  let binExpiration = createParagraph(
     "bins-list__container-item",
     bin.expiration
   );
-  var binSyntax = createParagraph(
+  let binSyntax = createParagraph(
     "bins-list__container-item",
     bin.syntaxHighlighting
   );
@@ -23,16 +23,16 @@ function addBin(bin, id) {
 }
 
 function createDivider() {
-  var divider = document.createElement("div");
+  let divider = document.createElement("div");
   divider.setAttribute("class", "bins-list__container-divider");
   binsList.appendChild(divider);
 }
 
 function createBinsListHead() {
-  var title = createParagraph("bins-list__container-item", "Title");
-  var added = createParagraph("bins-list__container-item", "Added");
-  var expiration = createParagraph("bins-list__container-item", "Expires");
-  var syntax = createParagraph("bins-list__container-item", "Syntax");
+  let title = createParagraph("bins-list__container-item", "Title");
+  let added = createParagraph("bins-list__container-item", "Added");
+  let expiration = createParagraph("bins-list__container-item", "Expires");
+  let syntax = createParagraph("bins-list__container-item", "Syntax");
   binsList.appendChild(title);
   binsList.appendChild(added);
   binsList.appendChild(expiration);

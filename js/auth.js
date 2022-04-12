@@ -76,14 +76,14 @@ const changeAuthState = new Promise((resolve) => {
 });
 
 function showUserInfo(user) {
-  var signedIn = document.getElementById("signed-in");
-  var anonymous = document.getElementById("anonymous");
+  let signedIn = document.getElementById("signed-in");
+  let anonymous = document.getElementById("anonymous");
 
   signedIn.style.display = "block";
   anonymous.style.display = "none";
 
-  var userName = document.getElementsByClassName("header__user-name")[0];
-  var userImage = document.getElementsByClassName("header__user-image")[0];
+  let userName = document.getElementsByClassName("header__user-name")[0];
+  let userImage = document.getElementsByClassName("header__user-image")[0];
   userName.textContent = user.displayName;
   if (user.photoURL != null) {
     firebase
@@ -100,8 +100,8 @@ function showUserInfo(user) {
 }
 
 function showAuthButtons() {
-  var signedIn = document.getElementById("signed-in");
-  var anonymous = document.getElementById("anonymous");
+  let signedIn = document.getElementById("signed-in");
+  let anonymous = document.getElementById("anonymous");
 
   signedIn.style.display = "none";
   anonymous.style.display = "block";

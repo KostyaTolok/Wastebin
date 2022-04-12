@@ -10,14 +10,14 @@ db.getCodeBin(binId)
 
 
 function loadBin(bin) {
-  var binTitle = document.getElementsByClassName("bin-info__title")[0];
-  var binCreatedDate = document.getElementById("bin-created-date");
-  var binViews = document.getElementById("bin-views-count");
-  var binExpiration = document.getElementById("bin-expiration");
-  var binSyntax = document.getElementsByClassName("top-area__left")[0];
-  var sourceCode = document.getElementById("code-content");
-  var newViewsCount = bin.viewsCount + 1;
-  var editAnchor = document.getElementById("edit-button");
+  let binTitle = document.getElementsByClassName("bin-info__title")[0];
+  let binCreatedDate = document.getElementById("bin-created-date");
+  let binViews = document.getElementById("bin-views-count");
+  let binExpiration = document.getElementById("bin-expiration");
+  let binSyntax = document.getElementsByClassName("top-area__left")[0];
+  let sourceCode = document.getElementById("code-content");
+  let newViewsCount = bin.viewsCount + 1;
+  let editAnchor = document.getElementById("edit-button");
   editAnchor.setAttribute("href", `edit-bin.html?id=${binId}`);
 
   db.updateBinViewsCount(binId, newViewsCount)

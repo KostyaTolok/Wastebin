@@ -12,10 +12,10 @@ binAuth.isAuthenticated().then((isAuthenticated) => {
       .catch((error) => {
         console.error("Error getting bins: ", error);
       });
-    var userName = document.getElementsByClassName(
+    let userName = document.getElementsByClassName(
       "user-details__user-name"
     )[0];
-    var userImage = document.getElementsByClassName("user-info__image")[0];
+    let userImage = document.getElementsByClassName("user-info__image")[0];
     userName.textContent = binAuth.user.displayName;
     if (binAuth.user.photoURL) {
       binAuth.getUserPhotoUrl().then((url) => {
@@ -28,8 +28,8 @@ binAuth.isAuthenticated().then((isAuthenticated) => {
 var searchInput = document.getElementsByClassName("search-container__input")[0];
 
 searchInput.addEventListener("input", (event) => {
-  var searchTerm = event.target.value;
-  var newBins = [];
+  let searchTerm = event.target.value;
+  let newBins = [];
   if (searchTerm.length > 0) {
     bins.forEach((bin) => {
       if (bin.data.title.toLowerCase().includes(searchTerm.toLowerCase())) {

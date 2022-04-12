@@ -2,7 +2,7 @@ var passwordInput = document.getElementById("password-input");
 var passwordCheckbox = document.getElementById("password-checkbox");
 
 function switchPassword() {
-  var passwordLabel = document.getElementById("password-label");
+  let passwordLabel = document.getElementById("password-label");
 
   if (passwordCheckbox.checked) {
     passwordLabel.textContent = "Enabled";
@@ -17,31 +17,31 @@ function switchPassword() {
 
 async function submitAddBinForm() {
   clearErrors();
-  var code = document.getElementsByClassName("code-area")[0].value;
-  var selectedSyntax = document.getElementsByName(
+  let code = document.getElementsByClassName("code-area")[0].value;
+  let selectedSyntax = document.getElementsByName(
     "syntax-highlighting-select"
   )[0].value;
-  var selectedExpiration = document.getElementsByName(
+  let selectedExpiration = document.getElementsByName(
     "bin-expiration-select"
   )[0].value;
-  var selectedPublicity = document.getElementsByName("bin-publicity-select")[0]
+  let selectedPublicity = document.getElementsByName("bin-publicity-select")[0]
     .value;
-  var password = passwordInput.value;
-  var title = document.getElementById("title-input").value;
+  let password = passwordInput.value;
+  let title = document.getElementById("title-input").value;
 
   if (title === "") {
     title = "Untitled";
   }
 
-  if (checkBinForm()) {
+  if (checkBinForm(addError)) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     let userId = null;
     if (binAuth.auth.currentUser) {
       userId = binAuth.getCurrentUserId();
     }
-    
-    var newBin = new CodeBin(
+
+    let newBin = new CodeBin(
       code
         .replace(new RegExp("\n", "g"), "<br>")
         .replace(new RegExp(" ", "g"), "&nbsp;"),
@@ -66,19 +66,19 @@ async function submitAddBinForm() {
   }
 }
 
-function checkBinForm() {
-  var code = document.getElementsByClassName("code-area")[0].value;
-  var password = passwordInput.value;
+function checkBinForm(callback) {
+  let code = document.getElementsByClassName("code-area")[0].value;
+  let password = passwordInput.value;
 
   let foundErrors = false;
 
   if (code === "") {
-    addError("You cannot create empty bin");
+    callback("You cannot create empty bin");
     foundErrors = true;
   }
 
   if (passwordCheckbox.checked && password == "") {
-    addError("Password cannot be blank");
+    callback("Password cannot be blank");
     foundErrors = true;
   }
 

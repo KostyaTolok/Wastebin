@@ -9,14 +9,14 @@ db.getCodeBin(binId)
   });
 
 function loadEditableBin(bin) {
-  var code = document.getElementsByClassName("code-area")[0];
-  var syntaxSelect = document.getElementsByName(
+  let code = document.getElementsByClassName("code-area")[0];
+  let syntaxSelect = document.getElementsByName(
     "syntax-highlighting-select"
   )[0];
-  var expirationSelect = document.getElementsByName("bin-expiration-select")[0];
-  var publicitySelect = document.getElementsByName("bin-publicity-select")[0];
-  var password = passwordInput;
-  var title = document.getElementById("title-input");
+  let expirationSelect = document.getElementsByName("bin-expiration-select")[0];
+  let publicitySelect = document.getElementsByName("bin-publicity-select")[0];
+  let password = passwordInput;
+  let title = document.getElementById("title-input");
 
   code.value = bin.code
     .replace(new RegExp("<br>", "g"), "\n")
@@ -34,26 +34,26 @@ function loadEditableBin(bin) {
 
 function submitUpdateBinForm() {
   clearErrors();
-  var code = document.getElementsByClassName("code-area")[0].value;
-  var selectedSyntax = document.getElementsByName(
+  let code = document.getElementsByClassName("code-area")[0].value;
+  let selectedSyntax = document.getElementsByName(
     "syntax-highlighting-select"
   )[0].value;
-  var selectedExpiration = document.getElementsByName(
+  let selectedExpiration = document.getElementsByName(
     "bin-expiration-select"
   )[0].value;
-  var selectedPublicity = document.getElementsByName("bin-publicity-select")[0]
+  let selectedPublicity = document.getElementsByName("bin-publicity-select")[0]
     .value;
-  var password = passwordInput.value;
-  var title = document.getElementById("title-input").value;
+  let password = passwordInput.value;
+  let title = document.getElementById("title-input").value;
 
-  if(title === "") {
+  if (title === "") {
     title = "Untitled";
   }
 
   if (checkBinForm()) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
-    var currentBin = new CodeBin(
+    let currentBin = new CodeBin(
       code
         .replace(new RegExp("\n", "g"), "<br>")
         .replace(new RegExp(" ", "g"), "&nbsp;"),

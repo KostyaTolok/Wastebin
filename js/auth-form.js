@@ -1,4 +1,4 @@
-function submitLoginForm() {
+function submitLoginForm(callback) {
   clearErrors();
   var email = document.getElementById("email-input").value;
   var password = document.getElementById("password-input").value;
@@ -6,12 +6,12 @@ function submitLoginForm() {
   var foundErrors = false;
 
   if (email === "") {
-    addError("Email cannot be blank");
+    callback("Email cannot be blank");
     foundErrors = true;
   }
 
   if (password === "") {
-    addError("Password cannot be blank");
+    callback("Password cannot be blank");
     foundErrors = true;
   }
 
@@ -24,12 +24,12 @@ function submitLoginForm() {
         location.href = "index.html";
       })
       .catch((error) => {
-        addError("Email or password is incorrect");
+        callback("Email or password is incorrect");
       });
   }
 }
 
-function submitRegisterForm() {
+function submitRegisterForm(callback) {
   clearErrors();
   var email = document.getElementById("email-input").value;
   var username = document.getElementById("username-input").value;
@@ -38,22 +38,22 @@ function submitRegisterForm() {
   var foundErrors = false;
 
   if (email === "") {
-    addError("Email cannot be blank");
+    callback("Email cannot be blank");
     foundErrors = true;
   }
 
   if (username === "") {
-    addError("Username cannot be blank");
+    callback("Username cannot be blank");
     foundErrors = true;
   }
 
   if (password === "") {
-    addError("Password cannot be blank");
+    callback("Password cannot be blank");
     foundErrors = true;
   }
 
   if (confirmPassword != password) {
-    addError("Passwords don't match");
+    callback("Passwords don't match");
     foundErrors = true;
   }
 
@@ -66,7 +66,7 @@ function submitRegisterForm() {
         location.href = "index.html";
       })
       .catch((error) => {
-        addError("Email is already in use");
+        callback("Email is already in use");
       });
   }
 }

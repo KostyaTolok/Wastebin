@@ -15,17 +15,17 @@ binAuth.isAuthenticated().then((isAuthenticated) => {
   }
 });
 
-function submitUpdateForm() {
+function submitUpdateForm(callback) {
   clearErrors();
   var foundErrors = false;
 
   if (emailInput.value === "") {
-    addError("Email cannot be blank");
+    callback("Email cannot be blank");
     foundErrors = true;
   }
 
   if (usernameInput.value === "") {
-    addError("Username cannot be blank");
+    callback("Username cannot be blank");
     foundErrors = true;
   }
 
@@ -35,7 +35,7 @@ function submitUpdateForm() {
     binAuth
       .updateUser(emailInput.value, usernameInput.value, imageInput.files[0])
       .catch((error) => {
-        addError(error);
+        callback(error);
       });
   }
 }
@@ -44,7 +44,8 @@ var fileTypes = ["image/jpeg", "image/pjpeg", "image/png"];
 imageInput.addEventListener("change", updateUserPicture);
 
 function updateUserPicture() {
-  var currentFiles = imageInput.files;
+  clearErrors();
+  let currentFiles = imageInput.files;
 
   if (currentFiles.length === 0) {
     addError("No user image selected");
