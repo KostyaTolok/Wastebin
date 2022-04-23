@@ -3,11 +3,13 @@
   --dark-bg-color: #272727;
   --header-button-color: #c4344b;
   --header-hovered-button-color: #aa273d;
+  --error-color: #e91034;
   --text-color: white;
   --disabled-text-color: rgba(255, 255, 255, 0.59);
   --border-color: #727272;
   --light-border-color: rgba(208, 202, 197, 0.26);
   --light-code-area-color: #4e4747;
+  --dark-code-area-color: #2d2d2d;
   --search-button-color: #e5e5e5;
   --main-font: "Red Hat Display";
   --code-font: "IBM Plex Sans";
@@ -53,7 +55,8 @@ h5,
 a,
 p,
 li,
-label {
+label,
+pre {
   margin: 0;
   color: var(--text-color);
 }
@@ -108,6 +111,7 @@ body {
   text-decoration: none;
   border-radius: 0.2em;
   color: var(--text-color);
+  cursor: pointer;
 }
 
 .button-medium {
@@ -149,6 +153,14 @@ body {
 .header__right {
   float: right;
   margin-top: 0.4rem;
+}
+
+#signed-in {
+  display: none;
+}
+
+#anonymous {
+  display: none;
 }
 
 .header__auth-button {
@@ -208,6 +220,7 @@ body {
   position: absolute;
   background-color: var(--dark-bg-color);
   min-width: 11.7rem;
+  z-index: 1;
 }
 
 .user-dropdown__content a {
@@ -245,9 +258,10 @@ main {
 }
 
 .code-area {
-  font-size: 1rem;
+  margin-top: 0 !important;
+  font-size: 1rem !important;
+  white-space: pre-wrap !important;
   border-radius: 0.2rem;
-  font-family: var(--code-font);
   min-height: 28.75rem;
   width: 100%;
   box-sizing: border-box;
@@ -314,6 +328,20 @@ main {
 
 .form__container-button:hover {
   background-color: var(--dark-bg-color);
+}
+
+.error-summary {
+  display: none;
+  background-color: var(--error-color);
+  border-radius: 0.2rem;
+  font-size: 1.25rem;
+  min-height: 2rem;
+  margin-top: 1.25rem;
+}
+
+.error-summary__list {
+  list-style: none;
+  padding: 0.1rem 0 0 0.6rem;
 }
 
 aside {
