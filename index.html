@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 </head>
@@ -19,7 +21,7 @@
             <a href="main.html" class="header__logo">Wastebin</a>
             <a href="public-bins.html" class="header__link_disabled">Bins</a>
             <a href="about-us.html" class="header__link_disabled">About us</a>
-            <a href="main-signed-in.html" class="button button-medium add-bin-button">
+            <a href="index.html" class="button button-medium add-bin-button">
                 <img src="images/plus.png" class="add-bin-button__icon">
                 <span class="add-bin-button__text">bin</span>
             </a>
@@ -30,8 +32,7 @@
                 </div>
                 <div id="signed-in">
                     <p class="header__user-name">User name</p>
-                    <a href="user-bins.html"><img class="image header__user-image" src="images/cat.jpg"
-                            alt="User Image"></a>
+                    <a href="user-bins.html"><img class="image header__user-image" alt="User Image" src="images/user-icon.jpg"></a>
                     <div class="user-dropdown">
                         <img src="images/arrow.png" class="user-dropdown__icon">
                         <div class="user-dropdown__content">
@@ -39,7 +40,7 @@
                             <a href="public-bins.html">Public bins</a>
                             <a href="user-profile.html">My profile</a>
                             <a href="change-password.html">Change password</a>
-                            <a href="index.html">Log out</a>
+                            <a id="log-out-link" href="">Log out</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +111,7 @@
         <aside>
             <nav>
                 <ul class="aside-bins-list">
-                    <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>      
+                    <a href="public-bins.html" class="title aside-bins-list__title">Public bins</a>
                 </ul>
             </nav>
         </aside>
@@ -120,6 +121,7 @@
     </footer>
     <script src="js/db/models/code-bin.js"></script>
     <script src="js/db/bin-database.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/bin-form.js"></script>
     <script src="js/main.js"></script>
 </body>

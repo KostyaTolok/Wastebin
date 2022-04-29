@@ -34,6 +34,14 @@ class BinDatabase {
       .get();
   }
 
+  async getCodeBinsByUserId(userId) {
+    return this.database
+      .collection("bins")
+      .withConverter(binConverter)
+      .where("userId", "==", userId)
+      .get();
+  }
+
   async getCodeBin(id) {
     return this.database
       .collection("bins")
@@ -62,6 +70,7 @@ class BinDatabase {
       title: bin.title,
     });
   }
+
 }
 
 var db = new BinDatabase();

@@ -9,16 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 </head>
 
 <body>
     <header class="header">
         <nav class="nav">
-            <a href="main-signed-in.html" class="header__logo">Wastebin</a>
+            <a href="index.html" class="header__logo">Wastebin</a>
             <a href="public-bins.html" class="header__link_disabled">Bins</a>
             <a href="about-us.html" class="header__link_disabled">About us</a>
-            <a href="main-signed-in.html" class="button button-medium add-bin-button">
+            <a href="index.html" class="button button-medium add-bin-button">
                 <img src="images/plus.png" class="add-bin-button__icon">
                 <span class="add-bin-button__text">bin</span>
             </a>
@@ -29,7 +31,7 @@
                 </div>
                 <div id="signed-in">
                     <p class="header__user-name">User name</p>
-                    <a href="user-bins.html"><img class="image header__user-image" src="images/cat.jpg"
+                    <a href="user-bins.html"><img class="image header__user-image" src="images/user-icon.jpg"
                             alt="User Image"></a>
                     <div class="user-dropdown">
                         <img src="images/arrow.png" class="user-dropdown__icon">
@@ -38,7 +40,7 @@
                             <a href="public-bins.html">Public bins</a>
                             <a href="user-profile.html">My profile</a>
                             <a href="change-password.html">Change password</a>
-                            <a href="index.html">Log out</a>
+                            <a id="log-out-link" href="">Log out</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +59,7 @@
                     <input class="input form__container-input" id="email-input" type="email">
                     <label class="form__container-label" for="password-input">Password:</label>
                     <input class="input form__container-input" id="password-input" type="password">
-                    <input onclick="submitLoginForm()"
+                    <input onclick="submitLoginForm(addError)"
                         class="button button-medium form__container-input form__container-button button-submit"
                         type="button" value="Login">
 
@@ -77,8 +79,9 @@
     </footer>
     <script src="js/db/models/code-bin.js"></script>
     <script src="js/db/bin-database.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/auth.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth-form.js"></script>
 </body>
 
 </html>
