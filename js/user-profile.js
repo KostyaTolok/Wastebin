@@ -8,7 +8,7 @@ binAuth.isAuthenticated().then((isAuthenticated) => {
     emailInput.value = binAuth.user.email;
     usernameInput.value = binAuth.user.displayName;
     if (binAuth.user.photoURL) {
-      binAuth.getUserPhotoUrl().then((url) => {
+      binAuth.getUserPhotoUrl(binAuth.user.photoURL).then((url) => {
         image.setAttribute("src", url);
       });
     }
@@ -17,23 +17,27 @@ binAuth.isAuthenticated().then((isAuthenticated) => {
 
 function submitUpdateForm(callback) {
   clearErrors();
-  var foundErrors = false;
+  let errors = [];
 
   if (emailInput.value === "") {
-    callback("Email cannot be blank");
-    foundErrors = true;
+    errors.push("Email cannot be blank");
   }
 
   if (usernameInput.value === "") {
-    callback("Username cannot be blank");
-    foundErrors = true;
+    errors.push("Username cannot be blank");
   }
 
-  if (foundErrors) {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      callback(error);
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     binAuth
       .updateUser(emailInput.value, usernameInput.value, imageInput.files[0])
+      .then(() => {
+        location.href = "index.html";
+      })
       .catch((error) => {
         callback(error);
       });

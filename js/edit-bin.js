@@ -2,7 +2,21 @@ var binId = getUrlParam("id");
 
 db.getCodeBin(binId)
   .then((bin) => {
-    loadEditableBin(bin.data());
+    binAuth.isAuthenticated().then((isAuthenticated) => {
+      if (isAuthenticated) {
+        db.isOwner(binId, binAuth.getCurrentUserId()).then((isOwner) => {
+          if (isOwner) {
+            loadEditableBin(bin.data());
+          } else {
+            alert("You are not the owner of this bin");
+            history.back();
+          }
+        });
+      } else {
+        alert("You need to be logged in to view this bin");
+        location.href = "login.html";
+      }
+    });
   })
   .catch((error) => {
     console.error("Error getting bins: ", error);
@@ -32,7 +46,7 @@ function loadEditableBin(bin) {
   }
 }
 
-function submitUpdateBinForm() {
+function submitUpdateBinForm(callback) {
   clearErrors();
   let code = document.getElementsByClassName("code-area")[0].value;
   let selectedSyntax = document.getElementsByName(
@@ -49,8 +63,12 @@ function submitUpdateBinForm() {
   if (title === "") {
     title = "Untitled";
   }
+  errors = checkBinForm();
 
-  if (checkBinForm()) {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      callback(error);
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     let currentBin = new CodeBin(

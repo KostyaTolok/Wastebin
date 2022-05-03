@@ -15,7 +15,7 @@ function switchPassword() {
   }
 }
 
-async function submitAddBinForm() {
+async function submitAddBinForm(callback) {
   clearErrors();
   let code = document.getElementsByClassName("code-area")[0].value;
   let selectedSyntax = document.getElementsByName(
@@ -32,8 +32,12 @@ async function submitAddBinForm() {
   if (title === "") {
     title = "Untitled";
   }
+  let errors = checkBinForm();
 
-  if (checkBinForm(addError)) {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      callback(error);
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     let userId = null;
@@ -58,7 +62,9 @@ async function submitAddBinForm() {
     db.addCodeBin(newBin)
       .then((bin) => {
         console.log("Bin added with ID: ", bin.id);
-        location.href = `bin-view.html?id=${bin.id}`;
+        binAuth.addBinAccess(bin.id).then(() => {
+          location.href = `bin-view.html?id=${bin.id}`;
+        });
       })
       .catch((error) => {
         console.error("Error adding bin: ", error);
@@ -66,23 +72,21 @@ async function submitAddBinForm() {
   }
 }
 
-function checkBinForm(callback) {
+function checkBinForm() {
   let code = document.getElementsByClassName("code-area")[0].value;
   let password = passwordInput.value;
 
-  let foundErrors = false;
+  let errors = [];
 
   if (code === "") {
-    callback("You cannot create empty bin");
-    foundErrors = true;
+    errors.push("You cannot create empty bin");
   }
 
   if (passwordCheckbox.checked && password == "") {
-    callback("Password cannot be blank");
-    foundErrors = true;
+    errors.push("Password cannot be blank");
   }
 
-  return foundErrors;
+  return errors;
 }
 
 function checkTab(element, event) {

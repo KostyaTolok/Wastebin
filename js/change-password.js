@@ -1,33 +1,30 @@
 function submitChangePasswordForm(callback) {
   clearErrors();
-  var oldPassword = document.getElementById("old-password-input").value;
-  var newPassword = document.getElementById("new-password-input").value;
-  var confirmPassword = document.getElementById("confirm-password-input").value;
-  var foundErrors = false;
-
-  if (oldPassword === "") {
-    callback("Old password cannot be blank");
-    foundErrors = true;
-  }
+  let newPassword = document.getElementById("new-password-input").value;
+  let confirmPassword = document.getElementById("confirm-password-input").value;
+  let errors = [];
 
   if (newPassword === "") {
-    callback("New password cannot be blank");
-    foundErrors = true;
-  }
-
-  if (newPassword === oldPassword) {
-    callback("Old and new passwords are same");
-    foundErrors = true;
+    errors.push("New password cannot be blank");
   }
 
   if (confirmPassword != newPassword) {
-    callback("Passwords don't match");
-    foundErrors = true;
+    errors.push("Passwords do not match");
   }
 
-  if (foundErrors) {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      callback(error);
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
-    location.href = "index.html";
+    binAuth
+      .updatePassword(newPassword)
+      .then(() => {
+        location.href = "index.html";
+      })
+      .catch((error) => {
+        callback(error.message);
+      });
   }
 }

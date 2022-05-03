@@ -1,21 +1,22 @@
 function submitLoginForm(callback) {
   clearErrors();
-  var email = document.getElementById("email-input").value;
-  var password = document.getElementById("password-input").value;
+  let email = document.getElementById("email-input").value;
+  let password = document.getElementById("password-input").value;
 
-  var foundErrors = false;
+  let errors = [];
 
   if (email === "") {
-    callback("Email cannot be blank");
-    foundErrors = true;
+    errors.push("Email cannot be blank");
   }
 
   if (password === "") {
-    callback("Password cannot be blank");
-    foundErrors = true;
+    errors.push("Password cannot be blank");
   }
 
-  if (foundErrors) {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      callback(error);
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     binAuth
@@ -24,6 +25,7 @@ function submitLoginForm(callback) {
         location.href = "index.html";
       })
       .catch((error) => {
+        console.log(error.message);
         callback("Email or password is incorrect");
       });
   }
@@ -31,33 +33,32 @@ function submitLoginForm(callback) {
 
 function submitRegisterForm(callback) {
   clearErrors();
-  var email = document.getElementById("email-input").value;
-  var username = document.getElementById("username-input").value;
-  var password = document.getElementById("password-input").value;
-  var confirmPassword = document.getElementById("confirm-password-input").value;
-  var foundErrors = false;
+  let email = document.getElementById("email-input").value;
+  let username = document.getElementById("username-input").value;
+  let password = document.getElementById("password-input").value;
+  let confirmPassword = document.getElementById("confirm-password-input").value;
+  let errors = [];
 
   if (email === "") {
-    callback("Email cannot be blank");
-    foundErrors = true;
+    errors.push("Email cannot be blank");
   }
 
   if (username === "") {
-    callback("Username cannot be blank");
-    foundErrors = true;
+    errors.push("Username cannot be blank");
   }
 
   if (password === "") {
-    callback("Password cannot be blank");
-    foundErrors = true;
+    errors.push("Password cannot be blank");
   }
 
   if (confirmPassword != password) {
-    callback("Passwords don't match");
-    foundErrors = true;
+    errors.push("Passwords do not match");
   }
 
-  if (foundErrors) {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
+      callback(error);
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     binAuth
@@ -66,6 +67,7 @@ function submitRegisterForm(callback) {
         location.href = "index.html";
       })
       .catch((error) => {
+        console.log(error.message);
         callback("Email is already in use");
       });
   }

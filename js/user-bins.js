@@ -2,6 +2,7 @@ var bins = [];
 
 binAuth.isAuthenticated().then((isAuthenticated) => {
   if (isAuthenticated) {
+
     db.getCodeBinsByUserId(binAuth.getCurrentUserId())
       .then((snapshot) => {
         snapshot.docs.forEach((bin) => {
@@ -12,13 +13,23 @@ binAuth.isAuthenticated().then((isAuthenticated) => {
       .catch((error) => {
         console.error("Error getting bins: ", error);
       });
+    
     let userName = document.getElementsByClassName(
       "user-details__user-name"
     )[0];
     let userImage = document.getElementsByClassName("user-info__image")[0];
+    let userRegistrtionDate = document.getElementById(
+      "user-registration-date"
+    );
+    
     userName.textContent = binAuth.user.displayName;
+
+    binAuth.getUserProfile(binAuth.user.uid).then((user) => {
+      userRegistrtionDate.textContent = user.data().registrationDate;
+    });
+
     if (binAuth.user.photoURL) {
-      binAuth.getUserPhotoUrl().then((url) => {
+      binAuth.getUserPhotoUrl(binAuth.user.photoURL).then((url) => {
         userImage.setAttribute("src", url);
       });
     }
