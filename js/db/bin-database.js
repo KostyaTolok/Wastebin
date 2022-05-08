@@ -71,6 +71,11 @@ class BinDatabase {
     });
   }
 
+  async isOwner(id, userId) {
+    this.getCodeBin(id).then((bin) => {
+      return bin.data().userId === userId;
+    });
+  }
 }
 
 var db = new BinDatabase();

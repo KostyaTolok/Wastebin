@@ -18,7 +18,7 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <a href="main.html" class="header__logo">Wastebin</a>
+            <a href="index.html" class="header__logo">Wastebin</a>
             <a href="public-bins.html" class="header__link_disabled">Bins</a>
             <a href="about-us.html" class="header__link_disabled">About us</a>
             <a href="index.html" class="button button-medium add-bin-button">
@@ -32,7 +32,8 @@
                 </div>
                 <div id="signed-in">
                     <p class="header__user-name">User name</p>
-                    <a href="user-bins.html"><img class="image header__user-image" alt="User Image" src="images/user-icon.jpg"></a>
+                    <a href="user-bins.html"><img class="image header__user-image" alt="User Image"
+                            src="images/user-icon.jpg"></a>
                     <div class="user-dropdown">
                         <img src="images/arrow.png" class="user-dropdown__icon">
                         <div class="user-dropdown__content">
@@ -57,8 +58,9 @@
                 <textarea name="code" class="code-area" onkeydown="checkTab(this, event);"></textarea>
                 <p class="title form__title">Configure your bin:</p>
                 <div class="form__container">
-                    <label class="form__container-label" for="syntax-highlighting-select">Syntax
-                        Highlighting:</label>
+                    <label class="form__container-label" for="syntax-highlighting-select">
+                        Syntax Highlighting:
+                    </label>
 
                     <select class="form__container-input form__container-select" name="syntax-highlighting-select">
                         <option>None</option>
@@ -70,8 +72,9 @@
                         <option>Html</option>
                         <option>CSS</option>
                     </select>
-                    <label class="form__container-label" for="bin-expiration-select">Bin
-                        Expiration:</label>
+                    <label class="form__container-label" for="bin-expiration-select">
+                        Bin Expiration:
+                    </label>
                     <select class="form__container-input form__container-select" name="bin-expiration-select">
                         <option>Never</option>
                         <option>Burn after read</option>
@@ -83,8 +86,9 @@
                         <option>6 month</option>
                         <option>1 year</option>
                     </select>
-                    <label class="form__container-label" for="bin-publicity-select">Bin
-                        Publicity:</label>
+                    <label class="form__container-label" for="bin-publicity-select">
+                        Bin Publicity:
+                    </label>
                     <select class="form__container-input form__container-select" name="bin-publicity-select">
                         <option>Public</option>
                         <option>Private</option>
@@ -104,7 +108,7 @@
                     <label class="form__container-label" for="title-input">Title:</label>
                     <input class="form__container-input" id="title-input" type="text">
                     <input class="button button-medium form__container-input form__container-button button-submit"
-                        type="button" id="add-bin-button" onclick="submitAddBinForm()" value="Submit bin">
+                        type="button" id="add-bin-button" onclick="submitAddBinForm(addError)" value="Submit bin">
                 </div>
             </form>
         </main>
@@ -120,6 +124,7 @@
         <p>Wastebin</p>
     </footer>
     <script src="js/db/models/code-bin.js"></script>
+    <script src="js/db/models/user-profile-model.js"></script>
     <script src="js/db/bin-database.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/bin-form.js"></script>

@@ -104,7 +104,7 @@
                     <label class="form__container-label" for="title-input">Title:</label>
                     <input class="form__container-input" id="title-input" type="text">
                     <input class="button button-medium form__container-input form__container-button button-submit"
-                        type="button" onclick="submitUpdateBinForm()" value="Submit bin">
+                        type="button" onclick="submitUpdateBinForm(addError)" value="Submit bin">
                 </div>
             </form>
         </main>
@@ -120,6 +120,7 @@
         <p>Wastebin</p>
     </footer>
     <script src="js/db/models/code-bin.js"></script>
+    <script src="js/db/models/user-profile-model.js"></script>
     <script src="js/db/bin-database.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/bin-form.js"></script>

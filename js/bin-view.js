@@ -2,12 +2,24 @@ var binId = getUrlParam("id");
 
 db.getCodeBin(binId)
   .then((bin) => {
-    loadBin(bin.data());
+    if (bin.data().password !== "") {
+      binAuth.isAuthenticated().then((isAuthenticated) => {
+        if (isAuthenticated) {
+          binAuth.getUserProfile(binAuth.user.uid).then((profile) => {
+            if (!profile.data().binAccess.includes(binId)) {
+              location.href = "enter-password.html?id=" + binId;
+            } else loadBin(bin.data());
+          });
+        } else {
+          alert("You need to be logged in to view this bin");
+          location.href = "login.html";
+        }
+      });
+    } else loadBin(bin.data());
   })
   .catch((error) => {
     console.error("Error getting bins: ", error);
   });
-
 
 function loadBin(bin) {
   let binTitle = document.getElementsByClassName("bin-info__title")[0];
@@ -26,6 +38,22 @@ function loadBin(bin) {
     })
     .catch((error) => {
       console.error("Error updating views count: ", error);
+    });
+
+  let binOwnerName = document.getElementById("bin-owner-name");
+  let binOwnerImage = document.getElementById("bin-owner-image");
+  binAuth
+    .getUserProfile(bin.userId)
+    .then((profile) => {
+      binOwnerName.textContent = profile.data().name;
+      if (profile.data().photoUrl) {
+        binAuth.getUserPhotoUrl(profile.data().photoUrl).then((url) => {
+          binOwnerImage.setAttribute("src", url);
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error getting user profile: ", error);
     });
 
   binTitle.textContent = bin.title;
@@ -49,16 +77,30 @@ function loadBin(bin) {
 }
 
 function deleteBin() {
-  if (confirm("Do you really want to delete bin?")) {
-    db.deleteCodeBin(binId)
-      .then(() => {
-        console.log(`Bin with id ${binId} successfully deleted`);
-        location.href = "index.html";
-      })
-      .catch((error) => {
-        console.error("Error deleting bin: ", error);
+  binAuth.isAuthenticated().then((isAuthenticated) => {
+    if (isAuthenticated) {
+      db.isOwner(binId, binAuth.getCurrentUserId()).then((isOwner) => {
+        if (isOwner) {
+          if (confirm("Do you really want to delete bin?")) {
+            db.deleteCodeBin(binId)
+              .then(() => {
+                console.log(`Bin with id ${binId} successfully deleted`);
+                binAuth.removeBinAccess(binId).then(() => {
+                  location.href = "index.html";
+                });
+              })
+              .catch((error) => {
+                console.error("Error deleting bin: ", error);
+              });
+          }
+        } else {
+          alert("You are not the owner of this bin");
+        }
       });
-  }
+    } else {
+      alert("You need to be logged in to delete this bin");
+    }
+  });
 }
 
 function highlightElement(syntax, sourceCode) {

@@ -18,14 +18,17 @@ function addSideBin(bin, id) {
     "aside-bins-list__item-name",
     bin.title
   );
-  let binInfo = createParagraph(
-    "aside-bins-list__item-info",
-    `User | ${bin.syntaxHighlighting} | ${bin.createdDate}`
-  );
 
-  listitem.appendChild(binTitle);
-  listitem.appendChild(binInfo);
-  binsList.appendChild(listitem);
+  binAuth.getUserProfile(bin.userId).then((profile) => {
+    let binInfo = createParagraph(
+      "aside-bins-list__item-info",
+      `${profile.data().name} | ${bin.syntaxHighlighting} | ${bin.createdDate}`
+    );
+
+    listitem.appendChild(binTitle);
+    listitem.appendChild(binInfo);
+    binsList.appendChild(listitem);
+  });
 }
 
 function createAnchor(link, cls, text) {
