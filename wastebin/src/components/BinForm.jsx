@@ -4,6 +4,7 @@ import { binAuth } from "../auth/bin-auth";
 import { db } from "../db/bin-database";
 import { CodeBin } from "../db/models/code-bin";
 import ErrorsList from "./ErrorsList";
+import PasswordCheckbox from "./PasswordCheckbox";
 
 function BinForm(props) {
   const navigate = useNavigate();
@@ -22,6 +23,26 @@ function BinForm(props) {
   const [errors, setErrors] = useState([]);
   const params = useParams();
   const binId = params.id;
+  const languages = [
+    "None",
+    "C",
+    "C++",
+    "C#",
+    "Python",
+    "JavaScript",
+    "Html",
+    "CSS",
+  ];
+  const expirationOptions = [
+    "Never",
+    "Burn after read",
+    "10 minutes",
+    "1 day",
+    "1 week",
+    "1 month",
+    "6 months",
+    "1 year",
+  ];
 
   useEffect(() => {
     if (binId) {
@@ -219,14 +240,13 @@ function BinForm(props) {
           value={binState.syntaxHighlighting}
           onChange={handleChange}
         >
-          <option>None</option>
-          <option>C</option>
-          <option>C++</option>
-          <option>C#</option>
-          <option>Python</option>
-          <option>Javascript</option>
-          <option>Html</option>
-          <option>CSS</option>
+          {languages.map((language, index) => {
+            return (
+              <option key={index} value={language}>
+                {language}
+              </option>
+            );
+          })}
         </select>
         <label className="form__container-label" htmlFor="expiration">
           Bin Expiration:
@@ -238,15 +258,13 @@ function BinForm(props) {
           value={binState.expiration}
           onChange={handleChange}
         >
-          <option>Never</option>
-          <option>Burn after read</option>
-          <option>10 minutes</option>
-          <option>1 hour</option>
-          <option>1 day</option>
-          <option>1 week</option>
-          <option>1 month</option>
-          <option>6 month</option>
-          <option>1 year</option>
+          {expirationOptions.map((option, index) => {
+            return (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            );
+          })}
         </select>
         <label className="form__container-label" htmlFor="publicity">
           Bin Publicity:
@@ -265,24 +283,11 @@ function BinForm(props) {
         <label className="form__container-label" htmlFor="password-checkbox">
           Password:
         </label>
-        <div>
-          <input
-            className="form__container-checkbox"
-            name="password"
-            id="password-checkbox"
-            onChange={handlePasswordCheckboxChange}
-            type="checkbox"
-            checked={binState.passwordCheckbox}
-          />
-
-          <label
-            className="form__container-label"
-            id="password-label"
-            htmlFor="password-checkbox"
-          >
-            {binState.passwordTitle}
-          </label>
-        </div>
+        <PasswordCheckbox
+          passwordCheckbox={binState.passwordCheckbox}
+          passwordTitle={binState.passwordTitle}
+          handlePasswordCheckboxChange={handlePasswordCheckboxChange}
+        />
         <input
           className={`form__container-input password-input ${passwordInputState}`}
           name="password"

@@ -10,11 +10,11 @@ function BinsList(props) {
   }, [props.bins]);
 
   return (
-    <div className="bins-list__container">
-      <p className="bins-list__container-item">Title</p>
-      <p className="bins-list__container-item">Added</p>
-      <p className="bins-list__container-item">Expires</p>
-      <p className="bins-list__container-item">Syntax</p>
+    <dl className="bins-list__container">
+      <dt className="bins-list__container-item">Title</dt>
+      <dt className="bins-list__container-item">Added</dt>
+      <dt className="bins-list__container-item">Expires</dt>
+      <dt className="bins-list__container-item">Syntax</dt>
       <div className="bins-list__container-divider"></div>
       {bins.map((bin) => {
         return (
@@ -31,7 +31,7 @@ function BinsList(props) {
           </>
         );
       })}
-    </div>
+    </dl>
   );
 }
 

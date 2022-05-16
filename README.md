@@ -2,6 +2,7 @@
 ## Толок Константин гр. 953505
 Wastebin is an analog of Pastebin which allows users to store and share text online. Mainly designed for programmers to store pieces of source code or configuration information since it supports syntax highlighting.
 ## [Mock up](https://www.figma.com/file/SsrQvG8vZbYgjTmA1DjRhe/Wastebin?node-id=0%3A1)
+## [Deployment](https://wastebin-2eb92.web.app/)
 ## Functions
 1. Creation of code bins
 2. Live syntax highlighting
